@@ -6,21 +6,29 @@ import InputBase from "@/components/base/InputBase";
 import Link from "@/components/base/Link";
 import { useFormStatus, useFormState } from "react-dom";
 import { ArrowLeft2 } from "iconsax-react";
+import { useState } from "react";
 
 export default function LoginModalPage(props: { isSignUp: boolean }) {
-  const [state, formAction] = useFormState(
-    props.isSignUp ? signupAction : loginAction,
-    void null
-  );
+  const [state, formAction] = useFormState(async (...args: [any, any]) => {
+    console.log(args);
+    try {
+      if (props.isSignUp) await signupAction(...args);
+      else await loginAction(...args);
+    } catch (e: any) {
+      setError(e.message);
+    }
+  }, void null);
+  const [error, setError] = useState("");
   return (
     <form className="w-full" action={formAction}>
       <h1 className="text-2xl font-bold text-darkBlue pb-4">
         {props.isSignUp ? "Sign Up" : "Login"}
       </h1>
+
       <Link href="/" className="absolute top-4 left-4 inline-flex items-center">
         <ArrowLeft2 size={20} className="mr-2" /> Return to Home
       </Link>
-
+      <p className="text-red-600 mb-4 text-center">{error}</p>
       <InputBase
         placeholder="Email"
         name="email"

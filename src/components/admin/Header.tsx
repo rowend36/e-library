@@ -7,7 +7,7 @@ export default function Header({ user: userPromise }: { user: Promise<User> }) {
   return (
     <>
       <h1 className="max-sm:hidden text-lg font-bold text-darkGrayishBlue">
-        NYSC ABIA E-LIBRARY DASHBOARD
+        SUMMARY-AI DASHBOARD
       </h1>
       <div className="flex-grow" />
       <div className="mr-2 text-end">

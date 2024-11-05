@@ -18,14 +18,14 @@ export default function Sidebar() {
         Overview
       </Link>
       <Link
-        href="/admin/books"
+        href="/admin/datasets"
         className={`w-full mb-2 py-2  text-darkGrayishBlue  ${
-          route.startsWith("/admin/books")
+          route.startsWith("/admin/datasets")
             ? "bg-primary hover:bg-primaryHover hover:text-white text-white"
             : ""
         }`}
       >
-        Manage Books
+        Manage Datasets
       </Link>
       <Link
         href="/admin/users"

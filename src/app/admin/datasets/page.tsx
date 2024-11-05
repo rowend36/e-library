@@ -1,15 +1,15 @@
 "use client";
-import { deleteBookAction, fetchBooks } from "@/actions/book_actions";
-import UploadBooksForm from "@/components/admin/books/UploadBooksForm";
+import { deleteDatasetAction, fetchDatasets } from "@/actions/dataset_actions";
+import UploadDatasetsForm from "@/components/admin/datasets/UploadDatasetsForm";
 import { ButtonBase } from "@/components/base/ButtonBase";
 import Modal from "@/components/Modal";
-import { Book } from "@/data/models/book";
+import { Dataset } from "@/data/models/dataset";
 import { useEffect, useState } from "react";
 
-export default function ManageBooksPage() {
+export default function ManageDatasetsPage() {
   const [showModal, setShowModal] = useState(false);
   const [page, setPage] = useState(0);
-  const [books, setBooks] = useState([] as Book[]);
+  const [datasets, setDatasets] = useState([] as Dataset[]);
   const [refreshToken, setRefreshToken] = useState(1);
   const refresh = () => {
     setRefreshToken((e) => {
@@ -17,19 +17,19 @@ export default function ManageBooksPage() {
     });
   };
   useEffect(() => {
-    fetchBooks(page).then(setBooks);
+    fetchDatasets(page).then(setDatasets);
   }, [page, refreshToken]);
   return (
     <>
-      <h1 className="font-bold text-xl text-darkBlue mt-4">Manage Books</h1>
+      <h1 className="font-bold text-xl text-darkBlue mt-4">Manage Datasets</h1>
       <div className="flex justify-end">
         <ButtonBase onClick={() => setShowModal(true)}>
-          Upload New Book
+          Upload New Dataset
         </ButtonBase>
       </div>
-      <Modal title="Upload New Book" open={showModal} onClose={setShowModal}>
+      <Modal title="Upload New Dataset" open={showModal} onClose={setShowModal}>
         {showModal ? (
-          <UploadBooksForm onSubmit={() => setShowModal(false)} />
+          <UploadDatasetsForm onSubmit={() => setShowModal(false)} />
         ) : null}
       </Modal>
       <div className="overflow-auto flex max-w-full">
@@ -43,18 +43,20 @@ export default function ManageBooksPage() {
             </tr>
           </thead>
           <tbody>
-            {books.map((e) => (
-              <tr key={e.book_id} className="odd:bg-slate-100">
-                <td className="p-1 w-8 border-r border-black">{e.book_id}</td>
+            {datasets.map((e) => (
+              <tr key={e.dataset_id} className="odd:bg-slate-100">
+                <td className="p-1 w-8 border-r border-black">
+                  {e.dataset_id}
+                </td>
                 <td className="p-1 pl-4 border-r border-black">{e.title}</td>
                 <td className="p-1 pl-4">{e.created_at?.toLocaleString()}</td>
                 <td className="w-8 px-4">
                   <ButtonBase
                     size="small"
                     onClick={() => {
-                      deleteBookAction(e.book_id);
-                      setBooks((books) => {
-                        return books.filter((f) => e !== f);
+                      deleteDatasetAction(e.dataset_id);
+                      setDatasets((datasets) => {
+                        return datasets.filter((f) => e !== f);
                       });
                       refresh();
                     }}

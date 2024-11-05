@@ -14,9 +14,9 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        primary: "hsl(142, 75%, 49%)",
-        primaryHover: "hsl(142, 88%, 40%)",
-        primaryLight: "hsl(142, 88%, 90%)",
+        primary: "#2196f3",
+        primaryHover: "#58a1f5",
+        primaryLight: "#a8c1f9",
         text: "rgb(36, 50, 66)",
         darkBlue: "hsl(228, 39%, 23%)",
         darkGrayishBlue: "hsl(227, 12%, 50%)",

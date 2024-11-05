@@ -1,5 +1,5 @@
 import Image from "next/image";
-import companyLogo from "@/assets/book.png";
+import companyLogo from "@/assets/dataset.png";
 import Link from "next/link";
 export function AppLogo(props: any) {
   /* Logo */
@@ -10,18 +10,16 @@ export function AppLogo(props: any) {
       {...props}
       className={"pt-2 flex items-center gap-1 " + props.className}
     >
-      <Image
+      {/* <Image
         src={companyLogo}
         className="object-contain h-[4em] w-auto "
         alt=""
-      />{" "}
+      />{" "} */}
       <span
-        className="font-[400] lowercase leading-tight text-primary pt-[0.5em]"
-        style={{ letterSpacing: 0.5, fontFamily: "Varela Round" }}
+        className="leading-tight text-white bg-primary px-2 pt-1 rounded-full text-center h-16 w-16 flex items-center justify-center font-bold text-2xl"
+        style={{ letterSpacing: 0.5 }}
       >
-        NYSC ABIA
-        <br />
-        E-LIBRARY
+        SAI
       </span>
     </Link>
   );

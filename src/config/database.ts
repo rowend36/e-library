@@ -1,7 +1,4 @@
-import { Author } from "@/data/models/author";
-import { Book } from "@/data/models/book";
-import { Category } from "@/data/models/category";
-import { Review } from "@/data/models/review";
+import { Dataset } from "@/data/models/dataset";
 import { User } from "@/data/models/user";
 import knex from "knex";
 import { type } from "os";
@@ -20,19 +17,8 @@ export const db = knex({
 });
 
 type metadata = {
-  authors: Author;
-  categories: Category;
-  books: Book;
-  book_authors: {
-    book_id: number;
-    author_id: number;
-  };
-  book_categories: {
-    book_id: number;
-    category_id: number;
-  };
+  datasets: Dataset;
   users: User;
-  reviews: Review;
 };
 
 export function Type<T>(e: T) {

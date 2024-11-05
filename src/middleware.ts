@@ -4,6 +4,7 @@ import { getSession } from "./utils/session";
 
 export async function middleware(request: NextRequest) {
   const session = await getSession();
+
   const currentUser = session.user;
   const isLoggingIn = /^\/signup|^\/login/.test(request.nextUrl.pathname);
 

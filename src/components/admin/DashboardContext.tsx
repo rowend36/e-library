@@ -3,7 +3,7 @@ import { User } from "@/data/models/user";
 import { createContext, useContext } from "react";
 const DashboardContext = createContext({
   user: null as User | null,
-  numBooks: 0 as number,
+  numDatasets: 0 as number,
 });
 export const DashboardProvider = DashboardContext.Provider;
 export const useDashboard = () => {
